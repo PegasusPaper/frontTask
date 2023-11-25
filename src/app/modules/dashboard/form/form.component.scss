@@ -1,0 +1,25 @@
+.container {
+  margin: 0 auto;
+  width: 800px;
+  height: 100%;
+}
+
+.lg {
+  width: 500px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+}
+
+.color {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.color:hover {
+  color: #3b82f6;
+  transition: color 0.3s ease;
+}

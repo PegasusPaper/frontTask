@@ -1,0 +1,91 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="flex flex-column">
+  <h1 class="mb-6">SignUp</h1>
+  <div class="flex flex-column gap-2">
+    <div class="flex flex-column mb-3 gap-2">
+      <label class="font-normal text-800" htmlFor="username">Username</label>
+      <input
+        class="p-inputtext-sm"
+        pInputText
+        formControlName="user"
+        id="username"
+        aria-describedby="username-help"
+      />
+      <span
+        *ngIf="isValidField('user')"
+        class="text-xs text-red-400 font-light"
+      >
+        {{ getFieldError("user") }}
+      </span>
+    </div>
+
+    <div class="flex flex-column mb-3 gap-2">
+      <label class="font-normal text-800" htmlFor="name">Name</label>
+      <input
+        class="p-inputtext-sm"
+        pInputText
+        formControlName="name"
+        id="name"
+        aria-describedby="username-help"
+      />
+      <span
+        *ngIf="isValidField('name')"
+        class="text-xs text-red-400 font-light"
+      >
+        {{ getFieldError("name") }}
+      </span>
+    </div>
+    <div class="flex flex-column mb-3 gap-2">
+      <label class="font-normal text-800" htmlFor="lastname">LastName</label>
+      <input
+        class="p-inputtext-sm"
+        pInputText
+        formControlName="lastname"
+        id="lastname"
+        aria-describedby="username-help"
+      />
+      <span
+        *ngIf="isValidField('lastname')"
+        class="text-xs text-red-400 font-light"
+      >
+        {{ getFieldError("lastname") }}
+      </span>
+    </div>
+    <div class="flex flex-column mb-3 gap-2">
+      <label class="font-normal text-800" htmlFor="email">Email</label>
+      <input
+        type="email"
+        class="p-inputtext-sm"
+        pInputText
+        formControlName="email"
+        id="email"
+        aria-describedby="username-help"
+      />
+      <span
+        *ngIf="isValidField('email')"
+        class="text-xs text-red-400 font-light"
+      >
+        {{ getFieldError("email") }}
+      </span>
+    </div>
+    <div class="flex flex-column gap-2 mb-4">
+      <label class="font-normal text-800" htmlFor="password">Password</label>
+      <input
+        class="p-inputtext-sm"
+        type="password"
+        pInputText
+        formControlName="password"
+        id="password"
+        aria-describedby="username-help"
+      />
+      <span
+        *ngIf="isValidField('password')"
+        class="text-xs text-red-400 font-light"
+      >
+        {{ getFieldError("password") }}
+      </span>
+      <span class="text-xs text-red-400 font-light">{{ message }}</span>
+    </div>
+  </div>
+  <button class="buton mb-2" type="submit">SignUp</button>
+  <a routerLink="/auth/login" class="text-xs text-400">return to login?</a>
+</form>

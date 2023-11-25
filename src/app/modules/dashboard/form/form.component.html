@@ -1,0 +1,140 @@
+<div
+  class="flex bg-custom align-content-center justify-content-center flex-wrap min-w-auto h-screen"
+>
+  <div
+    class="flex align-items-center justify-content-center p-6 min-w-min min-h-min surface-border border-3 bg-white font-bold border-round m-2"
+  >
+    <form
+      [formGroup]="myForm"
+      (ngSubmit)="onSubmit()"
+      class="flex flex-column lg"
+    >
+      <i routerLink="/dashboard" class="pi pi-angle-left color"></i>
+      <h1 class="mb-6">{{ title | titlecase }}</h1>
+      <div class="field grid">
+        <label
+          for="firstname3"
+          class="col-fixed font-light"
+          style="width: 100px"
+          >Name</label
+        >
+        <div class="col">
+          <input
+            id="firstname3"
+            formControlName="name"
+            type="text"
+            class="large text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
+          />
+          <span
+            *ngIf="isValidField('name')"
+            class="text-xs text-red-400 font-light"
+          >
+            {{ getFieldError("name") }}
+          </span>
+        </div>
+      </div>
+      <div class="field grid">
+        <label for="lastname3" class="col-fixed font-light" style="width: 100px"
+          >Status</label
+        >
+        <div class="col">
+          <select
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
+            formControlName="status"
+            name=""
+            id=""
+          >
+            @for (item of status; track $index) {
+            <option value="{{ item.value }}">
+              {{ item.title | titlecase }}
+            </option>
+            }
+          </select>
+        </div>
+        <span
+          *ngIf="isValidField('status')"
+          class="text-xs text-red-400 font-light"
+        >
+          {{ getFieldError("status") }}
+        </span>
+      </div>
+
+      <div class="field grid">
+        <label for="lastname3" class="col-fixed font-light" style="width: 100px"
+          >Owner</label
+        >
+
+        <div class="col">
+          <select
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
+            formControlName="owner"
+            name="owner"
+            id=""
+          >
+            @for (item of users; track $index) {
+            <option value="{{ item.user }}">
+              {{ item.name }} {{ item.lastname }}
+            </option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div class="field grid">
+        <label for="lastname3" class="col-fixed font-light" style="width: 100px"
+          >Assigned</label
+        >
+        <div class="col">
+          <select
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
+            formControlName="assigned"
+            name=""
+            id=""
+          >
+            @for (item of users; track $index) {
+            <option value="{{ item.user }}">
+              {{ item.name }} {{ item.lastname }}
+            </option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div class="field grid">
+        <label for="lastname3" class="col-fixed font-light" style="width: 100px"
+          >Due Date</label
+        >
+        <div class="col">
+          <input
+            id="lastname3"
+            formControlName="due_date"
+            type="date"
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
+          />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="lastname3" class="col-fixed font-light" style="width: 100px"
+          >Description</label
+        >
+        <div class="col">
+          <textarea
+            rows="7"
+            formControlName="description"
+            cols="auto"
+            pInputTextarea
+          ></textarea>
+          <span
+            *ngIf="isValidField('description')"
+            class="text-xs text-red-400 font-light"
+          >
+            {{ getFieldError("description") }}
+          </span>
+          <span class="text-xs text-red-400 font-light">{{ message }}</span>
+        </div>
+      </div>
+      <button [disabled]="myForm.invalid" class="buton mb-2">Submit</button>
+    </form>
+  </div>
+</div>

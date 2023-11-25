@@ -1,0 +1,44 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="flex flex-column">
+  <h1 class="mb-6">Login</h1>
+  <div class="flex flex-column gap-2">
+    <div class="flex flex-column mb-3 gap-2">
+      <label class="font-normal text-800" htmlFor="username">Email</label>
+      <input
+        class="p-inputtext-sm"
+        formControlName="email"
+        pInputText
+        id="email"
+        aria-describedby="username-help"
+      />
+      <span
+        *ngIf="isValidField('email')"
+        class="text-xs text-red-400 font-light"
+      >
+        {{ getFieldError("email") }}
+      </span>
+    </div>
+    <div class="flex flex-column mb-3 gap-2">
+      <label class="font-normal text-800" htmlFor="username">Password</label>
+      <input
+        class="p-inputtext-sm"
+        type="password"
+        formControlName="password"
+        pInputText
+        id="password"
+        aria-describedby="username-help"
+      />
+      <span
+        *ngIf="isValidField('password')"
+        class="text-xs text-red-400 font-light"
+      >
+        {{ getFieldError("password") }}
+      </span>
+      <span class="text-xs text-red-400 font-light">{{ message }}</span>
+    </div>
+  </div>
+
+  <button class="buton mb-2">Login</button>
+  <a routerLink="/auth/signup" class="text-xs text-400"
+    >Dont you have account?</a
+  >
+</form>
